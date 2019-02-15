@@ -1,7 +1,7 @@
 package funds
 
 import (
-	"github.com/louisevanderlith/mango/pkg"
+	"github.com/louisevanderlith/mango"
 )
 
 type LineItem struct {
@@ -12,5 +12,5 @@ type LineItem struct {
 }
 
 func (o LineItem) Valid() (bool, error) {
-	return util.ValidateStruct(&o)
+	return mango.ValidateStruct(&o)
 }

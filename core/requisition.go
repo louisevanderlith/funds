@@ -2,7 +2,7 @@ package funds
 
 import (
 	"github.com/louisevanderlith/husk"
-	"github.com/louisevanderlith/mango/pkg/enums"
+	"github.com/louisevanderlith/mango/enums"
 )
 
 type Requisition struct {

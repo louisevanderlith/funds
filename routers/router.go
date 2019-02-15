@@ -8,16 +8,16 @@
 package routers
 
 import (
-	"github.com/louisevanderlith/mango/api/funds/controllers"
-	"github.com/louisevanderlith/mango/pkg"
-	"github.com/louisevanderlith/mango/pkg/enums"
+	"github.com/louisevanderlith/funds/controllers"
+	"github.com/louisevanderlith/mango"
+	"github.com/louisevanderlith/mango/enums"
 
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/plugins/cors"
-	"github.com/louisevanderlith/mango/pkg/control"
+	"github.com/louisevanderlith/mango/control"
 )
 
-func Setup(s *util.Service) {
+func Setup(s *mango.Service) {
 	ctrlmap := EnableFilter(s)
 
 	ns := beego.NewNamespace("/v1",
@@ -35,7 +35,7 @@ func Setup(s *util.Service) {
 	beego.AddNamespace(ns)
 }
 
-func EnableFilter(s *util.Service) *control.ControllerMap {
+func EnableFilter(s *mango.Service) *control.ControllerMap {
 	ctrlmap := control.CreateControlMap(s)
 
 	emptyMap := make(control.ActionMap)

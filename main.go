@@ -4,10 +4,10 @@ import (
 	"log"
 
 	"github.com/astaxie/beego"
-	"github.com/louisevanderlith/mango/api/funds/routers"
-	_ "github.com/louisevanderlith/mango/core/funds"
-	"github.com/louisevanderlith/mango/pkg"
-	"github.com/louisevanderlith/mango/pkg/enums"
+	"github.com/louisevanderlith/funds/routers"
+	"github.com/louisevanderlith/mango"
+	"github.com/louisevanderlith/mango/enums"
+	_ "github.com/louisevanderlith/mango/funds"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 
 	// Register with router
 	appName := beego.BConfig.AppName
-	srv := util.NewService(mode, appName, enums.API)
+	srv := mango.NewService(mode, appName, enums.API)
 
 	port := beego.AppConfig.String("httpport")
 	err := srv.Register(port)
