@@ -20,19 +20,8 @@ import (
 func Setup(s *mango.Service) {
 	ctrlmap := EnableFilter(s)
 
-	ns := beego.NewNamespace("/v1",
-		beego.NSNamespace("/credit",
-			beego.NSInclude(
-				controllers.NewCreditCtrl(ctrlmap),
-			),
-		),
-		beego.NSNamespace("/requisition",
-			beego.NSInclude(
-				controllers.NewRequisitionCtrl(ctrlmap),
-			),
-		),
-	)
-	beego.AddNamespace(ns)
+	beego.Router("/v1/credit", controllers.NewCreditCtrl(ctrlmap))
+	beego.Router("/v1/requisition", controllers.NewRequisitionCtrl(ctrlmap))
 }
 
 func EnableFilter(s *mango.Service) *control.ControllerMap {
@@ -44,7 +33,7 @@ func EnableFilter(s *mango.Service) *control.ControllerMap {
 	emptyMap["PUT"] = enums.User
 
 	ctrlmap.Add("/credit", emptyMap)
-	ctrlmap.Add("/register", emptyMap)
+	ctrlmap.Add("/requisition", emptyMap)
 
 	beego.InsertFilter("/*", beego.BeforeRouter, ctrlmap.FilterAPI)
 
