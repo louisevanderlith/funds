@@ -1,4 +1,4 @@
-package funds
+package core
 
 import (
 	"github.com/louisevanderlith/mango"

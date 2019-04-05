@@ -1,4 +1,4 @@
-package funds
+package core
 
 import (
 	"github.com/louisevanderlith/husk"
@@ -10,8 +10,12 @@ type context struct {
 
 var ctx context
 
-func init() {
+func CreateContext() {
 	ctx = context{
 		Transactions: husk.NewTable(new(Transaction)),
 	}
+}
+
+func Shutdown() {
+	ctx.Transactions.Save()
 }
