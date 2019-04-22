@@ -1,7 +1,7 @@
 package core
 
 import (
-	"github.com/louisevanderlith/mango"
+	"github.com/louisevanderlith/husk"
 )
 
 type LineItem struct {
@@ -12,5 +12,5 @@ type LineItem struct {
 }
 
 func (o LineItem) Valid() (bool, error) {
-	return mango.ValidateStruct(&o)
+	return husk.ValidateStruct(&o)
 }

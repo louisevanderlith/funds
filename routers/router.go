@@ -8,13 +8,13 @@
 package routers
 
 import (
-	"github.com/louisevanderlith/funds/controllers"
-	"github.com/louisevanderlith/mango"
-	"github.com/louisevanderlith/mango/enums"
-
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/plugins/cors"
+	"github.com/louisevanderlith/funds/controllers"
+	"github.com/louisevanderlith/mango"
 	"github.com/louisevanderlith/mango/control"
+	secure "github.com/louisevanderlith/secure/core"
+	"github.com/louisevanderlith/secure/core/roletype"
 )
 
 func Setup(s *mango.Service) {
@@ -27,10 +27,10 @@ func Setup(s *mango.Service) {
 func EnableFilter(s *mango.Service) *control.ControllerMap {
 	ctrlmap := control.CreateControlMap(s)
 
-	emptyMap := make(control.ActionMap)
-	emptyMap["GET"] = enums.User
-	emptyMap["POST"] = enums.User
-	emptyMap["PUT"] = enums.User
+	emptyMap := make(secure.ActionMap)
+	emptyMap["GET"] = roletype.User
+	emptyMap["POST"] = roletype.User
+	emptyMap["PUT"] = roletype.User
 
 	ctrlmap.Add("/credit", emptyMap)
 	ctrlmap.Add("/requisition", emptyMap)
