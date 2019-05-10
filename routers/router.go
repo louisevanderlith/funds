@@ -32,17 +32,17 @@ func EnableFilter(s *mango.Service) *control.ControllerMap {
 	emptyMap["POST"] = roletype.User
 	emptyMap["PUT"] = roletype.User
 
-	ctrlmap.Add("/credit", emptyMap)
-	ctrlmap.Add("/requisition", emptyMap)
+	ctrlmap.Add("/v1/credit", emptyMap)
+	ctrlmap.Add("/v1/requisition", emptyMap)
 
-	beego.InsertFilter("/*", beego.BeforeRouter, ctrlmap.FilterAPI)
+	beego.InsertFilter("/*", beego.BeforeRouter, ctrlmap.FilterAPI, false)
 
 	beego.InsertFilter("*", beego.BeforeRouter, cors.Allow(&cors.Options{
 		AllowAllOrigins: true,
 		AllowMethods:    []string{"GET", "POST", "PUT", "OPTIONS"},
 		AllowHeaders:    []string{"Origin", "Authorization", "Access-Control-Allow-Origin", "Content-Type"},
 		ExposeHeaders:   []string{"Content-Length", "Access-Control-Allow-Origin"},
-	}))
+	}), false)
 
 	return ctrlmap
 }

@@ -3,7 +3,7 @@ package core
 import "github.com/louisevanderlith/husk"
 
 type Transaction struct {
-	HeroID       int64
+	EntityKey    husk.Key
 	Total        int64
 	Requisitions []Requisition
 }
@@ -12,10 +12,10 @@ func (o Transaction) Valid() (bool, error) {
 	return husk.ValidateStruct(&o)
 }
 
-func CreateTransaction() {
-
+func (t Transaction) OpenRequsition(quoteKey husk.Key) {
+	//trans, err :=
 }
 
-func GetTransactions(heroID int64) {
+func GetTransactions(entityKey husk.Key) {
 
 }

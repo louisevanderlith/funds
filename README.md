@@ -1,5 +1,5 @@
 # funds
-Mango API: Funds
+Mango API: Funds holds payment information
 
 ## Run with Docker
 * $ docker build -t avosa/funds:dev .
