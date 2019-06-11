@@ -5,17 +5,17 @@ import (
 )
 
 type context struct {
-	Transactions husk.Tabler
+	Accounts husk.Tabler
 }
 
 var ctx context
 
 func CreateContext() {
 	ctx = context{
-		Transactions: husk.NewTable(new(Transaction)),
+		Accounts: husk.NewTable(new(Account)),
 	}
 }
 
 func Shutdown() {
-	ctx.Transactions.Save()
+	ctx.Accounts.Save()
 }
