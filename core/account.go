@@ -4,7 +4,7 @@ import "github.com/louisevanderlith/husk"
 
 type Account struct {
 	EntityKey    husk.Key
-	Total        int64
+	Total        Total
 	Requisitions []Requisition
 }
 
