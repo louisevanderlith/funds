@@ -9,8 +9,8 @@ type Requisition struct {
 	QuoteKey    husk.Key
 	Reference   string
 	Status      requisitionstatus.Enum
-	ClientKey   husk.Key
-	SupplierKey husk.Key
+	DebtorKey   husk.Key
+	CreditorKey husk.Key
 	Total       int64
 	LineItems   []LineItem
 }
