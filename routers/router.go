@@ -18,6 +18,7 @@ func Setup(s *mango.Service, host string) {
 
 	beego.Router("/v1/credit", controllers.NewCreditCtrl(ctrlmap))
 	beego.Router("/v1/requisition", controllers.NewRequisitionCtrl(ctrlmap))
+	beego.Router("/v1/account", controllers.NewAccountCtrl(ctrlmap))
 }
 
 func EnableFilter(s *mango.Service, host string) *control.ControllerMap {
@@ -30,6 +31,7 @@ func EnableFilter(s *mango.Service, host string) *control.ControllerMap {
 
 	ctrlmap.Add("/v1/credit", emptyMap)
 	ctrlmap.Add("/v1/requisition", emptyMap)
+	ctrlmap.Add("/v1/account", emptyMap)
 
 	beego.InsertFilter("/*", beego.BeforeRouter, ctrlmap.FilterAPI, false)
 	allowed := fmt.Sprintf("https://*%s", strings.TrimSuffix(host, "/"))
