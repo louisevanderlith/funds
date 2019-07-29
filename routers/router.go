@@ -1,26 +1,43 @@
 package routers
 
 import (
-	"fmt"
-	"strings"
-
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/plugins/cors"
+	"github.com/louisevanderlith/droxolite"
+	"github.com/louisevanderlith/droxolite/roletype"
 	"github.com/louisevanderlith/funds/controllers"
-	"github.com/louisevanderlith/mango"
-	"github.com/louisevanderlith/mango/control"
-	secure "github.com/louisevanderlith/secure/core"
-	"github.com/louisevanderlith/secure/core/roletype"
 )
 
-func Setup(s *mango.Service, host string) {
-	ctrlmap := EnableFilter(s, host)
+func Setup(poxy *droxolite.Epoxy) {
+	//Credit
+	credCtrl := &controllers.CreditController{}
+	msgGroup := droxolite.NewRouteGroup("credit", credCtrl)
+	//msgGroup.AddRoute("/", "POST", roletype.Unknown, credCtrl.Post)
+	msgGroup.AddRoute("/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, credCtrl.Get)
+	//msgGroup.AddRoute("/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, credCtrl.GetOne)
+	poxy.AddGroup(msgGroup)
+
+	//Requisition
+	reqCtrl := &controllers.RequisitionController{}
+	reqGroup := droxolite.NewRouteGroup("requisition", reqCtrl)
+	reqGroup.AddRoute("/", "POST", roletype.Unknown, reqCtrl.Post)
+	reqGroup.AddRoute("/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, reqCtrl.Get)
+	//reqGroup.AddRoute("/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, reqCtrl.GetOne)
+	poxy.AddGroup(reqGroup)
+
+	//Account
+	accCtrl := &controllers.AccountController{}
+	accGroup := droxolite.NewRouteGroup("account", accCtrl)
+	//accGroup.AddRoute("/", "POST", roletype.Unknown, accCtrl.Post)
+	accGroup.AddRoute("/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, accCtrl.Get)
+	//accGroup.AddRoute("/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, accCtrl.GetOne)
+	poxy.AddGroup(accGroup)
+	/*ctrlmap := EnableFilter(s, host)
 
 	beego.Router("/v1/credit", controllers.NewCreditCtrl(ctrlmap))
 	beego.Router("/v1/requisition", controllers.NewRequisitionCtrl(ctrlmap))
-	beego.Router("/v1/account", controllers.NewAccountCtrl(ctrlmap))
+	beego.Router("/v1/account", controllers.NewAccountCtrl(ctrlmap))*/
 }
 
+/*
 func EnableFilter(s *mango.Service, host string) *control.ControllerMap {
 	ctrlmap := control.CreateControlMap(s)
 
@@ -43,3 +60,4 @@ func EnableFilter(s *mango.Service, host string) *control.ControllerMap {
 
 	return ctrlmap
 }
+*/

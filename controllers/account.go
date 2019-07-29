@@ -1,18 +1,9 @@
 package controllers
 
-import (
-	"github.com/louisevanderlith/mango/control"
-)
+import "github.com/louisevanderlith/droxolite/xontrols"
 
 type AccountController struct {
-	control.APIController
-}
-
-func NewAccountCtrl(ctrlMap *control.ControllerMap) *AccountController {
-	result := &AccountController{}
-	result.SetInstanceMap(ctrlMap)
-
-	return result
+	xontrols.APICtrl
 }
 
 // @Title GetCreditBalance
