@@ -5,6 +5,7 @@ import (
 )
 
 type LineItem struct {
+	Code string
 	Description    string
 	UnitCost       int64
 	UnitsRequisted int

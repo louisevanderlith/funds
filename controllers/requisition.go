@@ -1,18 +1,9 @@
 package controllers
 
-import (
-	"github.com/louisevanderlith/mango/control"
-)
+import "github.com/louisevanderlith/droxolite/xontrols"
 
 type RequisitionController struct {
-	control.APIController
-}
-
-func NewRequisitionCtrl(ctrlMap *control.ControllerMap) *RequisitionController {
-	result := &RequisitionController{}
-	result.SetInstanceMap(ctrlMap)
-
-	return result
+	xontrols.APICtrl
 }
 
 // @Title GetUserRequisitions

@@ -2,7 +2,7 @@ package controllers
 
 import "github.com/louisevanderlith/droxolite/xontrols"
 
-type CreditController struct {
+type AccountController struct {
 	xontrols.APICtrl
 }
 
@@ -11,6 +11,6 @@ type CreditController struct {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [get]
-func (req *CreditController) Get() {
+func (req *AccountController) Get() {
 
 }

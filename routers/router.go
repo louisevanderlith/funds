@@ -1,32 +1,43 @@
-// @APIVersion 1.0.0
-// @Title beego Test API
-// @Description beego has a very cool tools to autogenerate documents for your API
-// @Contact astaxie@gmail.com
-// @TermsOfServiceUrl http://beego.me/
-// @License Apache 2.0
-// @LicenseUrl http://www.apache.org/licenses/LICENSE-2.0.html
 package routers
 
 import (
-	"fmt"
-	"strings"
-
-	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/plugins/cors"
+	"github.com/louisevanderlith/droxolite"
+	"github.com/louisevanderlith/droxolite/roletype"
 	"github.com/louisevanderlith/funds/controllers"
-	"github.com/louisevanderlith/mango"
-	"github.com/louisevanderlith/mango/control"
-	secure "github.com/louisevanderlith/secure/core"
-	"github.com/louisevanderlith/secure/core/roletype"
 )
 
-func Setup(s *mango.Service, host string) {
-	ctrlmap := EnableFilter(s, host)
+func Setup(poxy *droxolite.Epoxy) {
+	//Credit
+	credCtrl := &controllers.CreditController{}
+	msgGroup := droxolite.NewRouteGroup("credit", credCtrl)
+	//msgGroup.AddRoute("/", "POST", roletype.Unknown, credCtrl.Post)
+	msgGroup.AddRoute("All Credits", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, credCtrl.Get)
+	//msgGroup.AddRoute("/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, credCtrl.GetOne)
+	poxy.AddGroup(msgGroup)
+
+	//Requisition
+	reqCtrl := &controllers.RequisitionController{}
+	reqGroup := droxolite.NewRouteGroup("requisition", reqCtrl)
+	reqGroup.AddRoute("Create Requisition", "/", "POST", roletype.Unknown, reqCtrl.Post)
+	reqGroup.AddRoute("All Requistions", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, reqCtrl.Get)
+	//reqGroup.AddRoute("/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, reqCtrl.GetOne)
+	poxy.AddGroup(reqGroup)
+
+	//Account
+	accCtrl := &controllers.AccountController{}
+	accGroup := droxolite.NewRouteGroup("account", accCtrl)
+	//accGroup.AddRoute("/", "POST", roletype.Unknown, accCtrl.Post)
+	accGroup.AddRoute("All Accounts", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, accCtrl.Get)
+	//accGroup.AddRoute("/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, accCtrl.GetOne)
+	poxy.AddGroup(accGroup)
+	/*ctrlmap := EnableFilter(s, host)
 
 	beego.Router("/v1/credit", controllers.NewCreditCtrl(ctrlmap))
 	beego.Router("/v1/requisition", controllers.NewRequisitionCtrl(ctrlmap))
+	beego.Router("/v1/account", controllers.NewAccountCtrl(ctrlmap))*/
 }
 
+/*
 func EnableFilter(s *mango.Service, host string) *control.ControllerMap {
 	ctrlmap := control.CreateControlMap(s)
 
@@ -37,6 +48,7 @@ func EnableFilter(s *mango.Service, host string) *control.ControllerMap {
 
 	ctrlmap.Add("/v1/credit", emptyMap)
 	ctrlmap.Add("/v1/requisition", emptyMap)
+	ctrlmap.Add("/v1/account", emptyMap)
 
 	beego.InsertFilter("/*", beego.BeforeRouter, ctrlmap.FilterAPI, false)
 	allowed := fmt.Sprintf("https://*%s", strings.TrimSuffix(host, "/"))
@@ -48,3 +60,4 @@ func EnableFilter(s *mango.Service, host string) *control.ControllerMap {
 
 	return ctrlmap
 }
+*/

@@ -2,17 +2,17 @@ package core
 
 import "github.com/louisevanderlith/husk"
 
-type Transaction struct {
+type Account struct {
 	EntityKey    husk.Key
-	Total        int64
+	Total        Total
 	Requisitions []Requisition
 }
 
-func (o Transaction) Valid() (bool, error) {
+func (o Account) Valid() (bool, error) {
 	return husk.ValidateStruct(&o)
 }
 
-func (t Transaction) OpenRequsition(quoteKey husk.Key) {
+func (t Account) OpenRequsition(quoteKey husk.Key) {
 	//trans, err :=
 }
 
