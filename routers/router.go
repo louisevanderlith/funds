@@ -11,15 +11,15 @@ func Setup(poxy *droxolite.Epoxy) {
 	credCtrl := &controllers.CreditController{}
 	msgGroup := droxolite.NewRouteGroup("credit", credCtrl)
 	//msgGroup.AddRoute("/", "POST", roletype.Unknown, credCtrl.Post)
-	msgGroup.AddRoute("/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, credCtrl.Get)
+	msgGroup.AddRoute("All Credits", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, credCtrl.Get)
 	//msgGroup.AddRoute("/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, credCtrl.GetOne)
 	poxy.AddGroup(msgGroup)
 
 	//Requisition
 	reqCtrl := &controllers.RequisitionController{}
 	reqGroup := droxolite.NewRouteGroup("requisition", reqCtrl)
-	reqGroup.AddRoute("/", "POST", roletype.Unknown, reqCtrl.Post)
-	reqGroup.AddRoute("/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, reqCtrl.Get)
+	reqGroup.AddRoute("Create Requisition", "/", "POST", roletype.Unknown, reqCtrl.Post)
+	reqGroup.AddRoute("All Requistions", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, reqCtrl.Get)
 	//reqGroup.AddRoute("/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, reqCtrl.GetOne)
 	poxy.AddGroup(reqGroup)
 
@@ -27,7 +27,7 @@ func Setup(poxy *droxolite.Epoxy) {
 	accCtrl := &controllers.AccountController{}
 	accGroup := droxolite.NewRouteGroup("account", accCtrl)
 	//accGroup.AddRoute("/", "POST", roletype.Unknown, accCtrl.Post)
-	accGroup.AddRoute("/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, accCtrl.Get)
+	accGroup.AddRoute("All Accounts", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, accCtrl.Get)
 	//accGroup.AddRoute("/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, accCtrl.GetOne)
 	poxy.AddGroup(accGroup)
 	/*ctrlmap := EnableFilter(s, host)
