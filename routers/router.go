@@ -1,15 +1,17 @@
 package routers
 
 import (
-	"github.com/louisevanderlith/droxolite"
+	"github.com/louisevanderlith/droxolite/mix"
+	"github.com/louisevanderlith/droxolite/resins"
 	"github.com/louisevanderlith/droxolite/roletype"
+	"github.com/louisevanderlith/droxolite/routing"
 	"github.com/louisevanderlith/funds/controllers"
 )
 
-func Setup(poxy *droxolite.Epoxy) {
+func Setup(poxy resins.Epoxi) {
 	//Credit
 	credCtrl := &controllers.CreditController{}
-	msgGroup := droxolite.NewRouteGroup("credit", credCtrl)
+	msgGroup := routing.NewRouteGroup("credit", mix.JSON)
 	//msgGroup.AddRoute("/", "POST", roletype.Unknown, credCtrl.Post)
 	msgGroup.AddRoute("All Credits", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, credCtrl.Get)
 	//msgGroup.AddRoute("/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, credCtrl.GetOne)
@@ -17,15 +19,15 @@ func Setup(poxy *droxolite.Epoxy) {
 
 	//Requisition
 	reqCtrl := &controllers.RequisitionController{}
-	reqGroup := droxolite.NewRouteGroup("requisition", reqCtrl)
-	reqGroup.AddRoute("Create Requisition", "/", "POST", roletype.Unknown, reqCtrl.Post)
+	reqGroup := routing.NewRouteGroup("requisition", mix.JSON)
+	reqGroup.AddRoute("Create Requisition", "", "POST", roletype.Unknown, reqCtrl.Post)
 	reqGroup.AddRoute("All Requistions", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, reqCtrl.Get)
 	//reqGroup.AddRoute("/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, reqCtrl.GetOne)
 	poxy.AddGroup(reqGroup)
 
 	//Account
 	accCtrl := &controllers.AccountController{}
-	accGroup := droxolite.NewRouteGroup("account", accCtrl)
+	accGroup := routing.NewRouteGroup("account", mix.JSON)
 	//accGroup.AddRoute("/", "POST", roletype.Unknown, accCtrl.Post)
 	accGroup.AddRoute("All Accounts", "/all/{pagesize:[A-Z][0-9]+}", "GET", roletype.Admin, accCtrl.Get)
 	//accGroup.AddRoute("/{key:[0-9]+\x60[0-9]+}", "GET", roletype.Unknown, accCtrl.GetOne)

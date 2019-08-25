@@ -1,9 +1,12 @@
 package controllers
 
-import "github.com/louisevanderlith/droxolite/xontrols"
+import (
+	"net/http"
+
+	"github.com/louisevanderlith/droxolite/context"
+)
 
 type RequisitionController struct {
-	xontrols.APICtrl
 }
 
 // @Title GetUserRequisitions
@@ -11,7 +14,8 @@ type RequisitionController struct {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [get]
-func (req *RequisitionController) Get() {
+func (req *RequisitionController) Get(ctx context.Contexer) (int, interface{}) {
+	return http.StatusNotImplemented, nil
 	/*filter := funds.Requisition{}
 	var container []*funds.Requisition*/
 	//err := funds.Get .Read(&filter, &container)
@@ -25,7 +29,8 @@ func (req *RequisitionController) Get() {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router /:requisitionID [get]
-func (req *RequisitionController) GetByID() {
+func (req *RequisitionController) GetByID(ctx context.Contexer) (int, interface{}) {
+	return http.StatusNotImplemented, nil
 	/*var result db.IRecord
 
 	reqID, err := strconv.ParseInt(req.Ctx.Input.Param(":requisitionID"), 10, 64)
@@ -46,7 +51,8 @@ func (req *RequisitionController) GetByID() {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [post]
-func (req *RequisitionController) Post() {
+func (req *RequisitionController) Post(ctx context.Contexer) (int, interface{}) {
+	return http.StatusNotImplemented, nil
 	/*var requisition funds.Requisition
 	json.Unmarshal(req.Ctx.Input.RequestBody, &requisition)
 
@@ -61,7 +67,8 @@ func (req *RequisitionController) Post() {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [put]
-func (req *RequisitionController) Put() {
+func (req *RequisitionController) Put(ctx context.Contexer) (int, interface{}) {
+	return http.StatusNotImplemented, nil
 	/*var requisition funds.Requisition
 	json.Unmarshal(req.Ctx.Input.RequestBody, &requisition)
 

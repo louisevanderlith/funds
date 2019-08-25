@@ -1,9 +1,12 @@
 package controllers
 
-import "github.com/louisevanderlith/droxolite/xontrols"
+import (
+	"net/http"
+
+	"github.com/louisevanderlith/droxolite/context"
+)
 
 type AccountController struct {
-	xontrols.APICtrl
 }
 
 // @Title GetCreditBalance
@@ -11,6 +14,6 @@ type AccountController struct {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [get]
-func (req *AccountController) Get() {
-
+func (req *AccountController) Get(ctx context.Contexer) (int, interface{}) {
+	return http.StatusNotImplemented, nil
 }
