@@ -6,7 +6,7 @@ import (
 	"github.com/louisevanderlith/droxolite/context"
 )
 
-type RequisitionController struct {
+type Requisitions struct {
 }
 
 // @Title GetUserRequisitions
@@ -14,7 +14,16 @@ type RequisitionController struct {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [get]
-func (req *RequisitionController) Get(ctx context.Contexer) (int, interface{}) {
+func (req *Requisitions) Get(ctx context.Requester) (int, interface{}) {
+	return http.StatusNotImplemented, nil
+	/*filter := funds.Requisition{}
+	var container []*funds.Requisition*/
+	//err := funds.Get .Read(&filter, &container)
+
+	//req.Serve(err, container)
+}
+
+func (req *Requisitions) Search(ctx context.Requester) (int, interface{}) {
 	return http.StatusNotImplemented, nil
 	/*filter := funds.Requisition{}
 	var container []*funds.Requisition*/
@@ -29,7 +38,7 @@ func (req *RequisitionController) Get(ctx context.Contexer) (int, interface{}) {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router /:requisitionID [get]
-func (req *RequisitionController) GetByID(ctx context.Contexer) (int, interface{}) {
+func (req *Requisitions) View(ctx context.Requester) (int, interface{}) {
 	return http.StatusNotImplemented, nil
 	/*var result db.IRecord
 
@@ -51,7 +60,7 @@ func (req *RequisitionController) GetByID(ctx context.Contexer) (int, interface{
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [post]
-func (req *RequisitionController) Post(ctx context.Contexer) (int, interface{}) {
+func (req *Requisitions) Create(ctx context.Requester) (int, interface{}) {
 	return http.StatusNotImplemented, nil
 	/*var requisition funds.Requisition
 	json.Unmarshal(req.Ctx.Input.RequestBody, &requisition)
@@ -67,7 +76,7 @@ func (req *RequisitionController) Post(ctx context.Contexer) (int, interface{}) 
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [put]
-func (req *RequisitionController) Put(ctx context.Contexer) (int, interface{}) {
+func (req *Requisitions) Update(ctx context.Requester) (int, interface{}) {
 	return http.StatusNotImplemented, nil
 	/*var requisition funds.Requisition
 	json.Unmarshal(req.Ctx.Input.RequestBody, &requisition)

@@ -6,7 +6,7 @@ import (
 	"github.com/louisevanderlith/droxolite/context"
 )
 
-type CreditController struct {
+type Credits struct {
 }
 
 // @Title GetCreditBalance
@@ -14,6 +14,6 @@ type CreditController struct {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [get]
-func (req *CreditController) Get(ctx context.Contexer) (int, interface{}) {
+func (req *Credits) Get(ctx context.Requester) (int, interface{}) {
 	return http.StatusNotImplemented, nil
 }
