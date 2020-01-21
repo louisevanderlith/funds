@@ -14,7 +14,7 @@ type Requisitions struct {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [get]
-func (req *Requisitions) Get(ctx context.Requester) (int, interface{}) {
+func (req *Requisitions) Get(c *gin.Context) {
 	return http.StatusNotImplemented, nil
 	/*filter := funds.Requisition{}
 	var container []*funds.Requisition*/
@@ -23,7 +23,7 @@ func (req *Requisitions) Get(ctx context.Requester) (int, interface{}) {
 	//req.Serve(err, container)
 }
 
-func (req *Requisitions) Search(ctx context.Requester) (int, interface{}) {
+func (req *Requisitions) Search(c *gin.Context) {
 	return http.StatusNotImplemented, nil
 	/*filter := funds.Requisition{}
 	var container []*funds.Requisition*/
@@ -38,7 +38,7 @@ func (req *Requisitions) Search(ctx context.Requester) (int, interface{}) {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router /:requisitionID [get]
-func (req *Requisitions) View(ctx context.Requester) (int, interface{}) {
+func (req *Requisitions) View(c *gin.Context) {
 	return http.StatusNotImplemented, nil
 	/*var result db.IRecord
 
@@ -60,7 +60,7 @@ func (req *Requisitions) View(ctx context.Requester) (int, interface{}) {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [post]
-func (req *Requisitions) Create(ctx context.Requester) (int, interface{}) {
+func (req *Requisitions) Create(c *gin.Context) {
 	return http.StatusNotImplemented, nil
 	/*var requisition funds.Requisition
 	json.Unmarshal(req.Ctx.Input.RequestBody, &requisition)
@@ -76,7 +76,7 @@ func (req *Requisitions) Create(ctx context.Requester) (int, interface{}) {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [put]
-func (req *Requisitions) Update(ctx context.Requester) (int, interface{}) {
+func (req *Requisitions) Update(c *gin.Context) {
 	return http.StatusNotImplemented, nil
 	/*var requisition funds.Requisition
 	json.Unmarshal(req.Ctx.Input.RequestBody, &requisition)

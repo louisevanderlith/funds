@@ -14,6 +14,6 @@ type Accounts struct {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [get]
-func (req *Accounts) Get(ctx context.Requester) (int, interface{}) {
+func (req *Accounts) Get(c *gin.Context) {
 	return http.StatusNotImplemented, nil
 }

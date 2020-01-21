@@ -14,6 +14,6 @@ type Credits struct {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [get]
-func (req *Credits) Get(ctx context.Requester) (int, interface{}) {
+func (req *Credits) Get(c *gin.Context) {
 	return http.StatusNotImplemented, nil
 }
