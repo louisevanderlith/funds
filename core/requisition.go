@@ -15,6 +15,6 @@ type Requisition struct {
 	LineItems   []LineItem
 }
 
-func (o Requisition) Valid() (bool, error) {
+func (o Requisition) Valid() error {
 	return husk.ValidateStruct(&o)
 }

@@ -1,21 +1,16 @@
-package controllers
+package handles
 
 import (
 	"net/http"
-
-	"github.com/louisevanderlith/droxolite/context"
 )
-
-type Requisitions struct {
-}
 
 // @Title GetUserRequisitions
 // @Description Gets the current user's requisitions.
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [get]
-func (req *Requisitions) Get(ctx context.Requester) (int, interface{}) {
-	return http.StatusNotImplemented, nil
+func GetRequisitions (w http.ResponseWriter, r *http.Request) {
+	http.Error(w, "", http.StatusNotImplemented)
 	/*filter := funds.Requisition{}
 	var container []*funds.Requisition*/
 	//err := funds.Get .Read(&filter, &container)
@@ -23,8 +18,8 @@ func (req *Requisitions) Get(ctx context.Requester) (int, interface{}) {
 	//req.Serve(err, container)
 }
 
-func (req *Requisitions) Search(ctx context.Requester) (int, interface{}) {
-	return http.StatusNotImplemented, nil
+func SearchRequisitions(w http.ResponseWriter, r *http.Request) {
+	http.Error(w, "", http.StatusNotImplemented)
 	/*filter := funds.Requisition{}
 	var container []*funds.Requisition*/
 	//err := funds.Get .Read(&filter, &container)
@@ -38,8 +33,8 @@ func (req *Requisitions) Search(ctx context.Requester) (int, interface{}) {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router /:requisitionID [get]
-func (req *Requisitions) View(ctx context.Requester) (int, interface{}) {
-	return http.StatusNotImplemented, nil
+func ViewRequisition(w http.ResponseWriter, r *http.Request) {
+	http.Error(w, "", http.StatusNotImplemented)
 	/*var result db.IRecord
 
 	reqID, err := strconv.ParseInt(req.Ctx.Input.Param(":requisitionID"), 10, 64)
@@ -60,28 +55,12 @@ func (req *Requisitions) View(ctx context.Requester) (int, interface{}) {
 // @Success 200 {map[string]string} map[string]string
 // @Failure 403 body is empty
 // @router / [post]
-func (req *Requisitions) Create(ctx context.Requester) (int, interface{}) {
-	return http.StatusNotImplemented, nil
+func CreateRequisition(w http.ResponseWriter, r *http.Request) {
+	http.Error(w, "", http.StatusNotImplemented)
 	/*var requisition funds.Requisition
 	json.Unmarshal(req.Ctx.Input.RequestBody, &requisition)
 
 	_, err := funds.Ctx.Requisition.Create(&requisition)
 
 	req.Serve(err, "Requisition has been created.")*/
-}
-
-// @Title UpdateRequisition
-// @Description Update requisition to confirm delivery of goods or services
-// @Param	body		body 	funds.Requisition	true		"requisition entry"
-// @Success 200 {map[string]string} map[string]string
-// @Failure 403 body is empty
-// @router / [put]
-func (req *Requisitions) Update(ctx context.Requester) (int, interface{}) {
-	return http.StatusNotImplemented, nil
-	/*var requisition funds.Requisition
-	json.Unmarshal(req.Ctx.Input.RequestBody, &requisition)
-
-	err := funds.Ctx.Requisition.Update(&requisition)
-
-	req.Serve(err, "Requisition has been updated.")*/
 }

@@ -12,6 +12,6 @@ type LineItem struct {
 	UnitReceived   int
 }
 
-func (o LineItem) Valid() (bool, error) {
+func (o LineItem) Valid() error {
 	return husk.ValidateStruct(&o)
 }

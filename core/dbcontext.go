@@ -12,7 +12,7 @@ var ctx context
 
 func CreateContext() {
 	ctx = context{
-		Accounts: husk.NewTable(new(Account)),
+		Accounts: husk.NewTable(Account{}),
 	}
 }
 
