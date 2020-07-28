@@ -5,6 +5,7 @@ import (
 )
 
 type LineItem struct {
+	Stock
 	Code string
 	Description    string
 	UnitCost       int64
@@ -13,5 +14,5 @@ type LineItem struct {
 }
 
 func (o LineItem) Valid() error {
-	return husk.ValidateStruct(&o)
+	return husk.ValidateStruct(o)
 }

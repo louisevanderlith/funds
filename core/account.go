@@ -3,13 +3,13 @@ package core
 import "github.com/louisevanderlith/husk"
 
 type Account struct {
-	EntityKey    husk.Key
+	HeroKey    husk.Key
 	Total        Total
 	Requisitions []Requisition
 }
 
 func (o Account) Valid() error {
-	return husk.ValidateStruct(&o)
+	return husk.ValidateStruct(o)
 }
 
 func (t Account) OpenRequsition(quoteKey husk.Key) {
