@@ -5,11 +5,11 @@ import (
 )
 
 type LineItem struct {
-	Stock
-	Code string
+	StockKey       husk.Key
+	Code           string
 	Description    string
 	UnitCost       int64
-	UnitsRequisted int
+	UnitsRequested int
 	UnitReceived   int
 }
 
