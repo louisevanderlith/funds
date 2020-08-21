@@ -17,7 +17,7 @@ func SetupRoutes(scrt, secureUrl string) http.Handler {
 
 	r := mux.NewRouter()
 
-	lst, err := kong.Whitelist(http.DefaultClient, secureUrl, "logbook.history.view", scrt)
+	lst, err := kong.Whitelist(http.DefaultClient, secureUrl, "funds.accounts.view", scrt)
 
 	if err != nil {
 		panic(err)
