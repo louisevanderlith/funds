@@ -2,19 +2,20 @@ package core
 
 import (
 	"github.com/louisevanderlith/funds/core/requisitionstatus"
-	"github.com/louisevanderlith/husk"
+	"github.com/louisevanderlith/husk/hsk"
+	"github.com/louisevanderlith/husk/validation"
 )
 
 type Requisition struct {
-	QuoteKey    husk.Key
+	QuoteKey    hsk.Key
 	Reference   string
 	Status      requisitionstatus.Enum
-	DebtorKey   husk.Key //Hero
-	CreditorKey husk.Key //Hero
+	DebtorKey   hsk.Key //Hero
+	CreditorKey hsk.Key //Hero
 	Total       int64
 	LineItems   []LineItem
 }
 
 func (o Requisition) Valid() error {
-	return husk.ValidateStruct(o)
+	return validation.Struct(o)
 }

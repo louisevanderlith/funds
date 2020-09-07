@@ -5,7 +5,7 @@ import (
 )
 
 type context struct {
-	Accounts husk.Tabler
+	Accounts husk.Table
 }
 
 var ctx context

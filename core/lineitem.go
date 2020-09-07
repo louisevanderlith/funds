@@ -1,11 +1,12 @@
 package core
 
 import (
-	"github.com/louisevanderlith/husk"
+	"github.com/louisevanderlith/husk/hsk"
+	"github.com/louisevanderlith/husk/validation"
 )
 
 type LineItem struct {
-	StockKey       husk.Key
+	StockKey       hsk.Key
 	Code           string
 	Description    string
 	UnitCost       int64
@@ -14,5 +15,5 @@ type LineItem struct {
 }
 
 func (o LineItem) Valid() error {
-	return husk.ValidateStruct(o)
+	return validation.Struct(o)
 }
